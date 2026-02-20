@@ -39,7 +39,7 @@ subprojects {
                 pom {
                     name.set(project.name)
                     description.set("Cedar Authorization Framework for JAX-RS")
-                    url.set("https://github.com/Ardley-Technologies/cedar-authorization-framework")
+                    url.set("https://github.com/Ardley-Technologies/cedar-annotations")
 
                     licenses {
                         license {
@@ -57,9 +57,9 @@ subprojects {
                     }
 
                     scm {
-                        connection.set("scm:git:git://github.com/Ardley-Technologies/cedar-authorization-framework.git")
-                        developerConnection.set("scm:git:ssh://github.com:Ardley-Technologies/cedar-authorization-framework.git")
-                        url.set("https://github.com/Ardley-Technologies/cedar-authorization-framework")
+                        connection.set("scm:git:git://github.com/Ardley-Technologies/cedar-annotations.git")
+                        developerConnection.set("scm:git:ssh://github.com:Ardley-Technologies/cedar-annotations.git")
+                        url.set("https://github.com/Ardley-Technologies/cedar-annotations")
                     }
                 }
             }
@@ -68,7 +68,7 @@ subprojects {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/Ardley-Technologies/cedar-authorization-framework")
+                url = uri("https://maven.pkg.github.com/Ardley-Technologies/cedar-annotations")
                 credentials {
                     username = System.getenv("GITHUB_ACTOR")
                     password = System.getenv("GITHUB_TOKEN")
