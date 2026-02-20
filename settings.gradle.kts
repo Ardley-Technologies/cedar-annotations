@@ -2,7 +2,6 @@ rootProject.name = "cedar-authorization-framework"
 
 include("cedar-core")
 include("cedar-jaxrs")
-include("cedar-aws")
 
 // Dependency version management
 dependencyResolutionManagement {
