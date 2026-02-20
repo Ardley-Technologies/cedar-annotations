@@ -54,24 +54,54 @@ public interface AuthorizationService {
         private final String action;
         private final ResourceEntity resource;
 
+        /**
+         * Constructs an authorization request.
+         *
+         * @param principal The principal requesting access
+         * @param action The action being performed
+         * @param resource The resource being accessed
+         */
         public AuthorizationRequest(PrincipalEntity principal, String action, ResourceEntity resource) {
             this.principal = principal;
             this.action = action;
             this.resource = resource;
         }
 
+        /**
+         * Creates an authorization request.
+         *
+         * @param principal The principal requesting access
+         * @param action The action being performed
+         * @param resource The resource being accessed
+         * @return A new authorization request
+         */
         public static AuthorizationRequest of(PrincipalEntity principal, String action, ResourceEntity resource) {
             return new AuthorizationRequest(principal, action, resource);
         }
 
+        /**
+         * Returns the principal entity.
+         *
+         * @return The principal
+         */
         public PrincipalEntity getPrincipal() {
             return principal;
         }
 
+        /**
+         * Returns the action name.
+         *
+         * @return The action
+         */
         public String getAction() {
             return action;
         }
 
+        /**
+         * Returns the resource entity.
+         *
+         * @return The resource
+         */
         public ResourceEntity getResource() {
             return resource;
         }

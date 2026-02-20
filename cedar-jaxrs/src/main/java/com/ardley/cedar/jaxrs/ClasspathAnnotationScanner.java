@@ -28,6 +28,12 @@ public class ClasspathAnnotationScanner {
         private final Map<String, Set<String>> actionToResourceTypes;
         private final Set<String> allActions;
 
+        /**
+         * Constructs a scan result.
+         *
+         * @param actionToResourceTypes Map of actions to their resource types
+         * @param allActions Set of all discovered actions
+         */
         public ScanResult(Map<String, Set<String>> actionToResourceTypes, Set<String> allActions) {
             this.actionToResourceTypes = Collections.unmodifiableMap(actionToResourceTypes);
             this.allActions = Collections.unmodifiableSet(allActions);
@@ -36,6 +42,8 @@ public class ClasspathAnnotationScanner {
         /**
          * Get mapping of action name to the resource types it applies to.
          * Actions with empty sets are context-based (no specific resource).
+         *
+         * @return Map of action names to sets of resource types
          */
         public Map<String, Set<String>> getActionToResourceTypes() {
             return actionToResourceTypes;
@@ -43,6 +51,8 @@ public class ClasspathAnnotationScanner {
 
         /**
          * Get all discovered actions.
+         *
+         * @return Set of all action names
          */
         public Set<String> getAllActions() {
             return allActions;

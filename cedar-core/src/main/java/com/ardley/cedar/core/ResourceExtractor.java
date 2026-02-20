@@ -44,10 +44,15 @@ public interface ResourceExtractor<T> {
      * Cedar attribute types for schema generation.
      */
     enum AttributeType {
+        /** String attribute type. */
         STRING,
+        /** Long integer attribute type. */
         LONG,
+        /** Boolean attribute type. */
         BOOLEAN,
+        /** Set of strings attribute type. */
         SET_STRING,
+        /** Set of long integers attribute type. */
         SET_LONG
     }
 }

@@ -26,6 +26,11 @@ public class ResourceExtractorRegistry {
         this.extractors = Map.copyOf(builder.extractors);
     }
 
+    /**
+     * Creates a new builder for ResourceExtractorRegistry.
+     *
+     * @return A new builder instance
+     */
     public static Builder builder() {
         return new Builder();
     }

@@ -54,10 +54,21 @@ public class CedarAuthorizationFilter implements ContainerRequestFilter {
         this.includeResourceIdInErrors = builder.includeResourceIdInErrors;
     }
 
+    /**
+     * Creates a new builder for constructing authorization filters.
+     *
+     * @return A new builder instance
+     */
     public static Builder builder() {
         return new Builder();
     }
 
+    /**
+     * Filters incoming requests to enforce Cedar authorization.
+     * Extracts principal, resolves policy store, and checks authorization.
+     *
+     * @param ctx The request context
+     */
     @Override
     public void filter(ContainerRequestContext ctx) {
         Method method = resourceInfo.getResourceMethod();
@@ -416,41 +427,88 @@ public class CedarAuthorizationFilter implements ContainerRequestFilter {
         private boolean validateSchema = false;
         private boolean includeResourceIdInErrors = false;
 
+        /**
+         * Sets the principal extractor for extracting user identity from requests.
+         *
+         * @param extractor The principal extractor
+         * @return This builder
+         */
         public Builder principalExtractor(PrincipalExtractor extractor) {
             this.principalExtractor = extractor;
             return this;
         }
 
+        /**
+         * Sets the policy store resolver for determining the appropriate Cedar policy store.
+         *
+         * @param resolver The policy store resolver
+         * @return This builder
+         */
         public Builder policyStoreResolver(PolicyStoreResolver resolver) {
             this.policyStoreResolver = resolver;
             return this;
         }
 
+        /**
+         * Sets the Cedar entity type for context-based actions.
+         *
+         * @param type The entity type (e.g., "Customer")
+         * @return This builder
+         */
         public Builder contextEntityType(String type) {
             this.contextEntityType = type;
             return this;
         }
 
+        /**
+         * Sets the resource extractor registry for looking up extractors by resource type.
+         *
+         * @param registry The extractor registry
+         * @return This builder
+         */
         public Builder extractorRegistry(ResourceExtractorRegistry registry) {
             this.extractorRegistry = registry;
             return this;
         }
 
+        /**
+         * Sets the authorization service for evaluating Cedar policies.
+         *
+         * @param service The authorization service
+         * @return This builder
+         */
         public Builder authorizationService(AuthorizationService service) {
             this.authorizationService = service;
             return this;
         }
 
+        /**
+         * Enables or disables schema validation for resource attributes.
+         *
+         * @param validate true to enable validation
+         * @return This builder
+         */
         public Builder validateSchema(boolean validate) {
             this.validateSchema = validate;
             return this;
         }
 
+        /**
+         * Controls whether resource IDs are included in error messages.
+         *
+         * @param include true to include resource IDs in errors
+         * @return This builder
+         */
         public Builder includeResourceIdInErrors(boolean include) {
             this.includeResourceIdInErrors = include;
             return this;
         }
 
+        /**
+         * Builds the authorization filter.
+         *
+         * @return A new filter instance
+         */
         public CedarAuthorizationFilter build() {
             return new CedarAuthorizationFilter(this);
         }
@@ -460,6 +518,11 @@ public class CedarAuthorizationFilter implements ContainerRequestFilter {
      * Exception thrown when authorization is denied.
      */
     public static class AuthorizationException extends RuntimeException {
+        /**
+         * Constructs an authorization exception.
+         *
+         * @param message The error message
+         */
         public AuthorizationException(String message) {
             super(message);
         }
